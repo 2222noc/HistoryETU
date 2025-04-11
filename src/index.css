@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 215 80% 30%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 45 75% 52%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    --color-top: #08457e;
+    --color-upper-middle: #063971;
+    --color-middle: #05336e;
+    --color-lower-middle: #003366;
+    --color-bottom: #102c54;
+    
+    --leti-background: 214 70% 21%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-roboto;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair;
+  }
+
+  input, button, textarea, select {
+    @apply font-roboto;
+  }
+}
+
+@layer utilities {
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .font-roboto {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .card {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    margin: 12px;
+  }
+  
+  @media (max-width: 768px) {
+    .card {
+      font-size: 14px;
+      padding: 12px;
+    }
+  }
+  
+  .vertical-timeline-container {
+    @apply fixed left-6 top-0 h-full z-40 pointer-events-none;
+    display: flex;
+    align-items: center;
+    width: 160px;
+  }
+  
+  .vertical-timeline {
+    @apply h-3/4 w-1 bg-white/20 my-auto relative pointer-events-auto;
+  }
+
+  .mobile-vertical-timeline-container {
+    @apply fixed left-2 top-0 h-full z-40 pointer-events-none;
+    display: flex;
+    align-items: center;
+    width: 100px;
+  }
+  
+  .mobile-vertical-timeline {
+    @apply h-2/3 w-1 bg-white/20 my-auto relative pointer-events-auto;
+  }
+  
+  .timeline-progress {
+    @apply absolute left-0 top-0 w-full bg-[#2A75FF] transition-all duration-200;
+  }
+  
+  .timeline-marker {
+    @apply absolute flex items-center cursor-pointer transition-all duration-200 z-10;
+    transform: translateY(-50%);
+    left: 0;
+  }
+
+  .mobile-timeline-marker {
+    @apply absolute flex items-center cursor-pointer transition-all duration-200 z-10;
+    transform: translateY(-50%);
+    left: 0;
+  }
+  
+  .marker-dot {
+    @apply w-3 h-3 rounded-full border-2 border-white bg-[#2A75FF] transition-all duration-200;
+    transform: translateX(-50%);
+  }
+  
+  .marker-label {
+    @apply ml-4 text-xs font-medium text-white opacity-60 transition-all duration-200;
+    width: max-content;
+    text-wrap: nowrap;
+  }
+  
+  .timeline-marker:hover .marker-dot,
+  .timeline-marker.active .marker-dot,
+  .mobile-timeline-marker:hover .marker-dot,
+  .mobile-timeline-marker.active .marker-dot {
+    @apply scale-150 bg-white;
+  }
+  
+  .timeline-marker:hover .marker-label,
+  .timeline-marker.active .marker-label,
+  .mobile-timeline-marker:hover .marker-label,
+  .mobile-timeline-marker.active .marker-label {
+    @apply opacity-100 font-bold;
+  }
+  
+  @media (max-width: 768px) {
+    .mobile-timeline-marker .marker-label {
+      @apply text-[10px] ml-2;
+    }
+    
+    .mobile-timeline-marker .marker-dot {
+      @apply w-4 h-4;
+    }
+  }
+  
+  .timeline-deep-sea {
+    @apply relative min-h-screen w-full overflow-hidden;
+    background: linear-gradient(
+      to bottom,
+      var(--color-top),
+      var(--color-upper-middle),
+      var(--color-middle),
+      var(--color-lower-middle),
+      var(--color-bottom)
+    );
+    background-size: 100% 500%;
+    background-position: 0% var(--scroll-position, 0%);
+    transition: background-position 0.1s ease-out;
+  }
+
+  .timeline-events {
+    @apply relative w-full max-w-5xl mx-auto;
+  }
+
+  .period-container {
+    @apply relative p-8 rounded-lg;
+  }
+  
+  .period-header-container {
+    @apply bg-white/10 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/20 mb-12;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .period-header {
+    @apply flex justify-between items-center text-white mb-4;
+  }
+
+  .period-events-container {
+    @apply space-y-16 px-4;
+  }
+  
+  .event-card {
+    @apply relative max-w-2xl mx-auto md:mx-0;
+  }
+  
+  .from-left {
+    @apply md:ml-0 md:mr-auto;
+  }
+  
+  .from-right {
+    @apply md:ml-auto md:mr-0;
+  }
+  
+  .event-year {
+    @apply text-4xl md:text-5xl font-bold mb-4 text-white/80 font-playfair;
+  }
+
+  .sea-creature {
+    @apply absolute opacity-60 transition-all pointer-events-none;
+    animation: float 20s infinite ease-in-out;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(5deg);
+    }
+  }
+  
+  .bubble {
+    @apply absolute bg-white/20 rounded-full;
+    animation: bubble-rise 8s infinite ease-in-out;
+  }
+  
+  @keyframes bubble-rise {
+    0% {
+      transform: translateY(0);
+      opacity: 0;
+    }
+    20% {
+      opacity: 0.6;
+    }
+    80%, 100% {
+      transform: translateY(-100px);
+      opacity: 0;
+    }
+  }
+  
+  .historical-card {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border border-white/30;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+    background: transparent;
+  }
+  
+  .equal-height-cards {
+    @apply grid;
+  }
+  
+  .equal-height-cards > * {
+    @apply h-full;
+  }
+  
+  @media (max-width: 768px) {
+    .period-container {
+      @apply p-4;
+    }
+    
+    .event-card {
+      @apply w-full max-w-full;
+    }
+
+    .event-year {
+      @apply text-3xl;
+    }
+
+    .period-header-container {
+      @apply p-4;
+    }
+
+    .event-card.from-left,
+    .event-card.from-right {
+      @apply ml-0 mr-0;
+    }
+
+    .historical-card {
+      @apply hover:translate-y-0;
+      font-size: 14px;
+    }
+  }
+  
+  .gradient-background {
+    background: linear-gradient(
+      to bottom,
+      var(--color-top),
+      var(--color-upper-middle),
+      var(--color-middle),
+      var(--color-lower-middle),
+      var(--color-bottom)
+    );
+    background-size: 100% 500%;
+    background-position: 0% var(--scroll-position, 0%);
+    transition: background-position 0.1s ease-out;
+  }
+}
